@@ -1,8 +1,22 @@
 package com.varlanv.testlauncher.core;
 
-public class Api {
+import lombok.SneakyThrows;
 
-    public static void main(String[] args) {
-        System.out.println(1);
+public interface Api {
+
+    It it = null;
+
+    void body();
+
+    @SneakyThrows
+    default void it(String specification, ThrowingRunnable runnable) {
+        System.out.println(specification);
+        runnable.run();
+    }
+
+    @SneakyThrows
+    default void describe(String specification, ThrowingRunnable runnable) {
+        System.out.println(specification);
+        runnable.run();
     }
 }
